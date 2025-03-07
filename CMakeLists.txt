@@ -38,6 +38,7 @@ option(MI_NO_PADDING        "Force no use of padding even in DEBUG mode etc." OF
 option(MI_INSTALL_TOPLEVEL  "Install directly into $CMAKE_INSTALL_PREFIX instead of PREFIX/lib/mimalloc-version" OFF)
 option(MI_NO_THP            "Disable transparent huge pages support on Linux/Android for the mimalloc process only" OFF)
 option(MI_EXTRA_CPPDEFS     "Extra pre-processor definitions (use as `-DMI_EXTRA_CPPDEFS=\"opt1=val1;opt2=val2\"`)" "")
+option(MI_EXTRA_CFLAGS     "Extra compiler flags (use as `-DMI_EXTRA_CFLAGS=\"-flag1;-flag2=2\"`)" "")
 
 # negated options for vcpkg features
 option(MI_NO_USE_CXX        "Use plain C compilation (has priority over MI_USE_CXX)" OFF)
@@ -71,7 +72,12 @@ set(mi_sources
     src/stats.c
     src/prim/prim.c)
 
-set(mi_cflags "")
+if(MI_EXTRA_CFLAGS)
+ set(mi_cflags ${MI_EXTRA_CFLAGS})
+else()
+ set(mi_cflags "")
+endif()
+
 set(mi_cflags_static "")            # extra flags for a static library build
 set(mi_cflags_dynamic "")           # extra flags for a shared-object library build
 set(mi_libraries "")
