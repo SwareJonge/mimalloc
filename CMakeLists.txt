@@ -11,7 +11,7 @@ option(MI_OVERRIDE          "Override the standard malloc interface (i.e. define
 option(MI_XMALLOC           "Enable abort() call on memory allocation failure by default" OFF)
 option(MI_SHOW_ERRORS       "Show error and warning messages by default (only enabled by default in DEBUG mode)" OFF)
 option(MI_GUARDED           "Build with guard pages behind certain object allocations (implies MI_NO_PADDING=ON)" OFF)
-option(MI_USE_CXX           "Use the C++ compiler to compile the library (instead of the C compiler)" OFF)
+option(MI_USE_CXX           "Use the C++ compiler to compile the library (instead of the C compiler)" ON)
 option(MI_OPT_ARCH          "Only for optimized builds: turn on architecture specific optimizations (for x64: '-march=haswell;-mavx2' (2013), for arm64: '-march=armv8.1-a' (2016))" OFF)
 option(MI_OPT_SIMD          "Use SIMD instructions (requires MI_OPT_ARCH to be enabled)" OFF)
 option(MI_SEE_ASM           "Generate assembly files" OFF)
@@ -41,7 +41,7 @@ option(MI_EXTRA_CPPDEFS     "Extra pre-processor definitions (use as `-DMI_EXTRA
 
 # negated options for vcpkg features
 option(MI_NO_USE_CXX        "Use plain C compilation (has priority over MI_USE_CXX)" OFF)
-option(MI_NO_OPT_ARCH       "Do not use architecture specific optimizations (like '-march=armv8.1-a' for example) (has priority over MI_OPT_ARCH)" OFF)
+option(MI_NO_OPT_ARCH       "Do not use architecture specific optimizations (like '-march=armv8.1-a' for example) (has priority over MI_OPT_ARCH)" ON)
 
 # deprecated options
 option(MI_WIN_USE_FLS       "Use Fiber local storage on Windows to detect thread termination (deprecated)" OFF)
